@@ -1,7 +1,7 @@
 {
   "name": "@uniorm/core",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "files": [
     "dist",
@@ -24,5 +24,17 @@
   },
   "peerDependencies": {
     "knex": "^2.3.0"
-  }
+  },
+  "author": "dan <villalbautria08@gmail.com>",
+  "keywords": [
+    "uniorm",
+    "orm",
+    "sql",
+    "query",
+    "builder",
+    "query builder",
+    "db",
+    "database",
+    "knex"
+  ]
 }
