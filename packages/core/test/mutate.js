@@ -13,20 +13,21 @@ const client = uniorm({
   resources: schema,
 });
 
-tap.test("find many", async (t) => {
-  const res = await client.rs("Album").findMany({});
+tap.test("album insert", async (t) => {
+  const res = await client
+    .rs("Album")
+    .create({ input: { Title: "Gin", ArtistId: 270 } });
 
-  t.equal(res.length, 15);
-  t.equal(res[0].Artist, 1);
+  await client.rs("Album").delete({ key: res.id });
 
   t.end();
 });
 
-tap.test("find one", async (t) => {
-  const res = await client.rs("Album").findOne({ key: 89 });
+tap.test("artist update", async (t) => {
+  const name = "Nash Ensemble";
+  await client.rs("Artist").update({ key: 274, input: { name: "Gin" } });
 
-  t.equal(res.id, 89);
-  t.equal(res.Title, "American Idiot");
+  await client.rs("Artist").update({ key: 274, input: { name } });
 
   t.end();
 });

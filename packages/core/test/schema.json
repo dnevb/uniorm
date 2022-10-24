@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Album",
+    "key": "AlbumId",
+    "ref": "albums",
+    "fields": [
+      {
+        "ref": "Title",
+        "type": "str"
+      },
+      {
+        "name": "Artist",
+        "ref": "ArtistId",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "Artist",
+    "key": "ArtistId",
+    "ref": "artists",
+    "fields": [
+      {
+        "ref": "Name",
+        "type": "str"
+      }
+    ]
+  },
+  {
+    "name": "Track",
+    "key": "TrackId",
+    "ref": "tracks",
+    "fields": [
+      {
+        "ref": "Name",
+        "type": "str"
+      },
+      {
+        "ref": "Composer",
+        "type": "str"
+      },
+      {
+        "ref": "Milliseconds",
+        "type": "int"
+      }
+    ]
+  }
+]
