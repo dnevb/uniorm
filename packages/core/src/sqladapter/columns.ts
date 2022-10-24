@@ -1,11 +1,14 @@
-import type { Knex } from "knex";
 import type { Resource } from "../../types/Resource";
+import type { SqlAdapterOpts } from "./adapter";
 
-export const getColumns = (rs: Resource, client: Knex) =>
-  rs.fields
-    .map((field) => {
-      const column = field.ref;
+export const getColumns = (rs: Resource, opts: SqlAdapterOpts) =>
+  !opts.strict
+    ? "*"
+    : rs.fields
+        .map((field) => {
+          const column = field.ref;
 
-      return client.ref(column).as(field.name || column);
-    })
-    .concat(client.ref(rs.key).as("id"));
+          return opts.client.ref(column).as(field.name || column);
+        })
+        .concat(opts.client.ref(rs.key))
+        .concat(opts.client.ref(rs.key).as("id"));

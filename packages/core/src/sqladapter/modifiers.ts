@@ -4,7 +4,9 @@ import applyFilter from "./filter.js";
 import applyPagination from "./pagination.js";
 import applySort from "./sort.js";
 
-export const applyModifiers = (qb: Knex.QueryBuilder, mods: Modifiers = {}) => {
+export const applyModifiers = (qb: Knex.QueryBuilder, mods?: Modifiers) => {
+  if (!mods) return qb;
+
   applyPagination(qb, mods);
   applySort(qb, mods);
   applyFilter(qb, mods);

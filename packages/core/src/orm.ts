@@ -11,7 +11,7 @@ const uniorm: UniormFn = (opts) => {
     return model;
   };
 
-  return { rs };
+  return { rs, forEach: models.forEach };
 };
 
 export default uniorm;

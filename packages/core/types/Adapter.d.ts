@@ -1,14 +1,11 @@
 import type { Modifiers } from "./Modifiers";
 import type { Resource } from "./Resource";
 
-export type FindOneArgs = {
-  include?: string[];
-  key: ID;
-};
+export type FindOneArgs = { key: ID; include?: string[] };
 export type FindManyArgs<T = any> = Modifiers<T>;
-export type CreateArgs = { input: any };
-export type UpdateArgs = { key: ID; input: any };
-export type DeleteArgs = { key: ID };
+export type CreateArgs = { input: any; include?: string[] };
+export type UpdateArgs = { key: ID; input: any; include?: string[] };
+export type DeleteArgs = { key: ID; include?: string[] };
 
 export type AdapterHandler<A, R> = (
   rs: Resource,
